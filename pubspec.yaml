@@ -18,6 +18,8 @@ dependencies:
   firebase_core: ^2.9.0
   firebase_auth: ^4.4.0
   google_sign_in: ^6.0.2
+  get_it: ^7.2.0
+  injectable: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -25,6 +27,7 @@ dev_dependencies:
 
   freezed: ^2.3.2
   build_runner: ^2.3.3
+  injectable_generator: ^2.1.5
 
   flutter_lints: ^2.0.0
 

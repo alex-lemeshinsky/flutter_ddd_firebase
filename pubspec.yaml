@@ -20,6 +20,8 @@ dependencies:
   google_sign_in: ^6.0.2
   get_it: ^7.2.0
   injectable: ^2.1.1
+  another_flushbar: ^1.12.29
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:

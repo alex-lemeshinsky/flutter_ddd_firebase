@@ -20,8 +20,8 @@ dependencies:
   google_sign_in: ^6.0.2
   get_it: ^7.2.0
   injectable: ^2.1.1
-  another_flushbar: ^1.12.29
   uuid: ^3.0.7
+  auto_route: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +30,7 @@ dev_dependencies:
   freezed: ^2.3.2
   build_runner: ^2.3.3
   injectable_generator: ^2.1.5
+  auto_route_generator: ^6.1.0
 
   flutter_lints: ^2.0.0
 

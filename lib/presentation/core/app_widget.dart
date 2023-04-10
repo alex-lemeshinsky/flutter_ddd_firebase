@@ -1,23 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ddd_firebase/presentation/sign_in/sign_in_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ddd_firebase/application/auth/bloc/auth_bloc.dart';
+import 'package:flutter_ddd_firebase/injection.dart';
+import 'package:flutter_ddd_firebase/presentation/routes/router.dart';
 
 class AppWidget extends StatelessWidget {
-  const AppWidget({super.key});
+  AppWidget({super.key});
+
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Notes app",
-      theme: ThemeData.light().copyWith(
-        colorScheme: ColorScheme.light(
-          primary: Colors.green[800]!,
-          secondary: Colors.blueAccent,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         ),
-        inputDecorationTheme: InputDecorationTheme(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.0)),
+      ],
+      child: MaterialApp.router(
+        title: "Notes app",
+        theme: ThemeData.light().copyWith(
+          colorScheme: ColorScheme.light(
+            primary: Colors.green[800]!,
+            secondary: Colors.blueAccent,
+          ),
+          inputDecorationTheme: InputDecorationTheme(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+          ),
         ),
+        routerConfig: _appRouter.config(),
       ),
-      home: const SignInPage(),
     );
   }
 }

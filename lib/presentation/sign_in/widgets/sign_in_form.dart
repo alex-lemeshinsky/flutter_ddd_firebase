@@ -1,4 +1,3 @@
-import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ddd_firebase/application/auth/sign_in_form/bloc/sign_in_form_bloc.dart';
@@ -14,13 +13,17 @@ class SignInForm extends StatelessWidget {
           () => null,
           (either) => either.fold(
             (l) {
-              FlushbarHelper.createError(
-                message: l.map(
-                  cancelledByUser: (_) => "Cancelled by user",
-                  serverError: (_) => "Server error",
-                  emailAlreadyInUse: (_) => "Email is already in use",
-                  invalidEmailAndPasswordCombination: (_) =>
-                      "Invalid email or password",
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    l.map(
+                      cancelledByUser: (_) => "Cancelled by user",
+                      serverError: (_) => "Server error",
+                      emailAlreadyInUse: (_) => "Email is already in use",
+                      invalidEmailAndPasswordCombination: (_) =>
+                          "Invalid email or password",
+                    ),
+                  ),
                 ),
               );
             },
@@ -75,7 +78,7 @@ class SignInForm extends StatelessWidget {
                     .add(SignInFormEvent.passwordChanged(value)),
                 validator: (_) => BlocProvider.of<SignInFormBloc>(context)
                     .state
-                    .emailAddress
+                    .password
                     .value
                     .fold(
                       (l) => l.maybeMap(

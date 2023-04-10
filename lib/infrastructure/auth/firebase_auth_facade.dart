@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_ddd_firebase/domain/auth/auth_failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_ddd_firebase/domain/auth/i_auth_facade.dart';
@@ -20,7 +19,7 @@ class FirebaseAuthFacade implements IAuthFacade {
 
   @override
   Future<Option<AppUser>> getSignedInUser() => Future.value(
-        optionOf(_firebaseAuth.currentUser!.toDomain()),
+        optionOf(_firebaseAuth.currentUser?.toDomain()),
       );
 
   @override
@@ -37,7 +36,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         password: passwordStr,
       );
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseException catch (e) {
       if (e.code == "email-already-in-use") {
         return left(const AuthFailure.emailAlreadyInUse());
       } else {
@@ -60,7 +59,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         password: passwordStr,
       );
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseException catch (e) {
       if (e.code == "invalid-email" ||
           e.code == "wrong-password" ||
           e.code == "user-not-found" ||
@@ -90,7 +89,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       await _firebaseAuth.signInWithCredential(authCredential);
 
       return right(unit);
-    } on PlatformException {
+    } on FirebaseException {
       return left(const AuthFailure.serverError());
     }
   }

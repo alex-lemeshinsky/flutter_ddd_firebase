@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:flutter/material.dart';
 import 'package:flutter_ddd_firebase/domain/core/value_objects.dart';
 import 'package:flutter_ddd_firebase/domain/notes/note.dart';

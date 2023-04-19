@@ -12,18 +12,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart' as _i9;
 import 'package:firebase_auth/firebase_auth.dart' as _i3;
 import 'package:flutter_ddd_firebase/application/auth/bloc/auth_bloc.dart'
-    as _i12;
+    as _i13;
 import 'package:flutter_ddd_firebase/application/auth/sign_in_form/bloc/sign_in_form_bloc.dart'
-    as _i11;
-import 'package:flutter_ddd_firebase/application/notes/note_watcher/note_watcher_bloc.dart'
+    as _i12;
+import 'package:flutter_ddd_firebase/application/notes/note_form/note_form_bloc.dart'
     as _i10;
+import 'package:flutter_ddd_firebase/application/notes/note_watcher/note_watcher_bloc.dart'
+    as _i11;
 import 'package:flutter_ddd_firebase/domain/auth/i_auth_facade.dart' as _i5;
 import 'package:flutter_ddd_firebase/domain/notes/i_note_repository.dart'
     as _i7;
 import 'package:flutter_ddd_firebase/infrastructure/auth/firebase_auth_facade.dart'
     as _i6;
 import 'package:flutter_ddd_firebase/infrastructure/core/firebase_injactable_module.dart'
-    as _i13;
+    as _i14;
 import 'package:flutter_ddd_firebase/infrastructure/notes/note_repository.dart'
     as _i8;
 import 'package:get_it/get_it.dart' as _i1;
@@ -52,13 +54,15 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.lazySingleton<_i7.INoteRepository>(
         () => _i8.NoteRepository(gh<_i9.FirebaseFirestore>()));
-    gh.factory<_i10.NoteWatcherBloc>(
-        () => _i10.NoteWatcherBloc(gh<_i7.INoteRepository>()));
-    gh.factory<_i11.SignInFormBloc>(
-        () => _i11.SignInFormBloc(gh<_i5.IAuthFacade>()));
-    gh.factory<_i12.AuthBloc>(() => _i12.AuthBloc(gh<_i5.IAuthFacade>()));
+    gh.factory<_i10.NoteFormBloc>(
+        () => _i10.NoteFormBloc(gh<_i7.INoteRepository>()));
+    gh.factory<_i11.NoteWatcherBloc>(
+        () => _i11.NoteWatcherBloc(gh<_i7.INoteRepository>()));
+    gh.factory<_i12.SignInFormBloc>(
+        () => _i12.SignInFormBloc(gh<_i5.IAuthFacade>()));
+    gh.factory<_i13.AuthBloc>(() => _i13.AuthBloc(gh<_i5.IAuthFacade>()));
     return this;
   }
 }
 
-class _$FirebaseInjectableModule extends _i13.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i14.FirebaseInjectableModule {}

@@ -1,6 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ddd_firebase/application/auth/bloc/auth_bloc.dart';
 import 'package:flutter_ddd_firebase/application/auth/sign_in_form/bloc/sign_in_form_bloc.dart';
+import 'package:flutter_ddd_firebase/presentation/routes/router.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({super.key});
@@ -27,7 +30,12 @@ class SignInForm extends StatelessWidget {
                 ),
               );
             },
-            (r) => null,
+            (r) {
+              context.replaceRoute(const NotesOverviewRoute());
+              BlocProvider.of<AuthBloc>(context).add(
+                const AuthEvent.authCheckRequested(),
+              );
+            },
           ),
         );
       },

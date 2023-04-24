@@ -30,6 +30,9 @@ class AppWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.0),
             ),
           ),
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: Colors.blue[900],
+          ),
         ),
         routerConfig: _appRouter.config(),
       ),

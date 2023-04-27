@@ -1,16 +1,9 @@
-# flutter_ddd_firebase
+# Flutter DDD Firebase
 
-A new Flutter project.
+This repository is a some kind of fork of the original Flutter TDD Clean Architecture Course from Reso Coder, but updated to the latest versions of Dart, Flutter and other dependencies.
 
-## Getting Started
+So if you have some problems with null safety or something else like I did, checkout this repository and I hope it will help you.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Original course links:
+- [YouTube: YouTube playlist](https://www.youtube.com/playlist?list=PLB6lc7nQ1n4iS5p-IezFFgqP6YvAJy84U)
+- [Reso Coder website: Full tutorial with code here](https://resocoder.com/2020/03/09/flutter-firebase-ddd-course-1-domain-driven-design-principles/)
